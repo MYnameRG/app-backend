@@ -1,4 +1,4 @@
-module.exports.checkCollectionExist = async (db, colName) => {
+const checkCollectionExist = async (db, colName) => {
     try {
         const total_docs = await db.collection(colName).estimatedDocumentCount();
         if (total_docs == 0) {
@@ -11,7 +11,7 @@ module.exports.checkCollectionExist = async (db, colName) => {
     }
 }
 
-module.exports.fetchOrganization = async (db, octokit) => {
+const fetchOrganization = async (db, octokit) => {
     try {
         const total_organizations = await db.collection('organizations').estimatedDocumentCount();
         if (total_organizations != 0) return [];
@@ -28,7 +28,7 @@ module.exports.fetchOrganization = async (db, octokit) => {
     }
 }
 
-module.exports.fetchUsers = async (db, octokit) => {
+const fetchUsers = async (db, octokit) => {
     try {
         const total_users = await db.collection('users').estimatedDocumentCount();
         if (total_users != 0) return [];
@@ -52,7 +52,7 @@ module.exports.fetchUsers = async (db, octokit) => {
     }
 }
 
-module.exports.fetchRepositories = async (db, octokit) => {
+const fetchRepositories = async (db, octokit) => {
     try {
         const total_repositories = await db.collection('repositories').estimatedDocumentCount();
         if (total_repositories != 0) return [];
@@ -75,7 +75,7 @@ module.exports.fetchRepositories = async (db, octokit) => {
     }
 }
 
-module.exports.fetchCommits = async (db, octokit) => {
+const fetchCommits = async (db, octokit) => {
     try {
         const total_commits = await db.collection('commits').estimatedDocumentCount();
         if (total_commits != 0) return [];
@@ -100,7 +100,7 @@ module.exports.fetchCommits = async (db, octokit) => {
     }
 }
 
-module.exports.fetchPulls = async (db, octokit) => {
+const fetchPulls = async (db, octokit) => {
     try {
         const total_pulls = await db.collection('pulls').estimatedDocumentCount();
         if (total_pulls != 0) return [];
@@ -125,7 +125,7 @@ module.exports.fetchPulls = async (db, octokit) => {
     }
 }
 
-module.exports.fetchIssues = async (db, octokit) => {
+const fetchIssues = async (db, octokit) => {
     try {
         const total_issues = await db.collection('issues').estimatedDocumentCount();
         if (total_issues != 0) return [];
@@ -150,7 +150,7 @@ module.exports.fetchIssues = async (db, octokit) => {
     }
 }
 
-module.exports.fetchChangelogs = async (db, octokit) => {
+const fetchChangelogs = async (db, octokit) => {
     try {
         const total_changelogs = await db.collection('changelogs').estimatedDocumentCount();
         if (total_changelogs != 0) return [];
@@ -177,3 +177,14 @@ module.exports.fetchChangelogs = async (db, octokit) => {
         throw new Error(err);
     }
 }
+
+module.exports = {
+    checkCollectionExist,
+    fetchOrganization,
+    fetchUsers,
+    fetchRepositories,
+    fetchCommits,
+    fetchPulls,
+    fetchIssues,
+    fetchChangelogs
+};

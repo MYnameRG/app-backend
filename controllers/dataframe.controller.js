@@ -73,7 +73,7 @@ const getRecords = async (req, res) => {
         const { keyword } = req.body;
 
         const db = await accessToDatabase(integration_id);
-        
+
         let records = [];
         if (keyword != '') {
             const orConditions = (await getFieldsOfEntity(db, entity_id)).map((key) => {
@@ -83,7 +83,7 @@ const getRecords = async (req, res) => {
             });
 
             console.log(orConditions)
-            
+
             records = await db.collection(entity_id).aggregate([
                 { $match: { $or: orConditions } }
             ]).toArray();
@@ -102,4 +102,9 @@ const getRecords = async (req, res) => {
     }
 };
 
-module.exports = { getActiveIntegrations, getEntities, getFields, getRecords };
+module.exports = {
+    getActiveIntegrations,
+    getEntities,
+    getFields,
+    getRecords
+};
