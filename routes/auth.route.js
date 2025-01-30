@@ -1,5 +1,5 @@
 const express = require('express');
-const GithubController = require('../controllers/auth.controller')
+const GithubController = require('../controllers/auth.controller');
 
 const router = express.Router();
 const GithubServiceController = new GithubController();

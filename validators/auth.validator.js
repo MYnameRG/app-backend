@@ -9,10 +9,10 @@ const signup_validators = [
 ];
 
 const login_validators = [
-    body('email').notEmpty().isEmail().withMessage('Invalid email format'),
-    body('password').notEmpty()
-      .isLength({ min: 8 })
-      .withMessage('Password must be at least 8 characters long'),
-  ];
+  body('email').notEmpty().isEmail().withMessage('Invalid email format'),
+  body('password').notEmpty()
+    .isLength({ min: 8 })
+    .withMessage('Password must be at least 8 characters long'),
+];
 
 module.exports = { signup_validators, login_validators };

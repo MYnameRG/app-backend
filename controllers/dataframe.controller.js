@@ -1,6 +1,8 @@
 const { accessToDatabase } = require('../db/connection');
 const { getFieldsOfEntity } = require('../helpers/dataframe.helpers');
 
+
+
 const getActiveIntegrations = async (req, res) => {
     try {
         const db = await accessToDatabase('USER');
@@ -81,8 +83,6 @@ const getRecords = async (req, res) => {
                     [key]: { $regex: keyword, $options: 'i' }
                 }
             });
-
-            console.log(orConditions)
             
             records = await db.collection(entity_id).aggregate([
                 { $match: { $or: orConditions } }
